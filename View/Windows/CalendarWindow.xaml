@@ -1,0 +1,54 @@
+﻿<Window x:Class="WorldCoffee.View.Windows.CalendarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorldCoffee.View.Windows"
+        mc:Ignorable="d"
+        Height="600" Width="550"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid Background="#FF252525">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Viewbox Stretch="Fill">
+            <Calendar SelectionMode="SingleRange"
+                      Name="vacationCalendar" SelectedDatesChanged="vacationCalendar_SelectedDatesChanged"></Calendar>
+        </Viewbox>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <TextBlock Style="{StaticResource mediumTextStyle}"
+                       FontSize="20">Отпуск с:</TextBlock>
+            <TextBlock Style="{StaticResource mediumTextStyle}"
+                       FontSize="20"
+                       Grid.Column="2">Отпуск до:</TextBlock>
+            <TextBlock Grid.Column="1"
+                       Style="{StaticResource regularTextStyle}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Name="vacationStartTbl"></TextBlock>
+            <TextBlock Grid.Column="3"
+                       Style="{StaticResource regularTextStyle}"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Name="vacationEndTbl"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="cancelBtn" Click="cancelBtn_Click">Отмена</Button>
+            <Button Grid.Column="1"
+                    Name="acceptBtn" Click="acceptBtn_Click">Принять</Button>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,84 @@
+﻿<Window x:Class="WorldCoffee.View.Windows.AboutCoffeeHousesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorldCoffee.View.Windows"
+        mc:Ignorable="d"
+        Height="720" Width="1280"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid>
+        <Image Source="/Resources/Images/black-and-white-coffee-shop-background-eps-free-vector.jpg" 
+               Stretch="Fill">
+            <Image.Effect>
+                <BlurEffect Radius="25" KernelType="Gaussian"/>
+            </Image.Effect>
+        </Image>
+        <Rectangle Fill="#7F000000"></Rectangle>
+        <ListBox Background="Transparent"
+                 Name="coffeeHousesLb"
+                 VirtualizingPanel.ScrollUnit="Pixel"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="32"
+                            Height="512"
+                            VerticalAlignment="Top">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="80"></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Style="{StaticResource headerTextStyle}"
+                                       HorizontalAlignment="Left"
+                                       Text="{Binding name}"></TextBlock>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Style="{StaticResource mediumTextStyle}">Адрес:</TextBlock>
+                                    <TextBlock Style="{StaticResource mediumTextStyle}"
+                                               Margin="16 0"
+                                               Text="{Binding address}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                Grid.Row="1">
+                                    <TextBlock Style="{StaticResource mediumTextStyle}">Время работы:</TextBlock>
+                                    <TextBlock Style="{StaticResource mediumTextStyle}"
+                                   Margin="16 0"
+                                   Text="{Binding work_time_from}"></TextBlock>
+                                    <Separator Width="32"></Separator>
+                                    <TextBlock Style="{StaticResource mediumTextStyle}"
+                                   Text="{Binding work_time_to}"
+                                   Margin="16 0"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                Grid.Row="2">
+                                    <TextBlock Style="{StaticResource mediumTextStyle}">Контактный номер:</TextBlock>
+                                    <TextBlock Style="{StaticResource mediumTextStyle}"
+                                   Margin="16 0"
+                                   Text="{Binding contact_phone}"></TextBlock>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal"
+                                Grid.Row="3">
+                                    <TextBlock Style="{StaticResource mediumTextStyle}">Число сотрудников:</TextBlock>
+                                    <TextBlock Style="{StaticResource mediumTextStyle}"
+                                   Name="employeesCount"
+                                   Tag="{Binding id}"
+                                   Margin="16 0" Loaded="employeesCount_Loaded"></TextBlock>
+                                </StackPanel>
+                                <Separator Grid.Row="4"></Separator>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

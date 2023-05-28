@@ -1,0 +1,338 @@
+﻿<Window x:Class="WorldCoffee.View.Windows.EmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorldCoffee.View.Windows"
+        mc:Ignorable="d"
+        xml:lang="RU-ru"
+        MinWidth="1280" MinHeight="720"
+        Width="1920" Height="1080"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
+    <Grid>
+        <Image Source="/Resources/Images/black-and-white-coffee-shop-background-eps-free-vector.jpg" 
+               Stretch="Fill">
+            <Image.Effect>
+                <BlurEffect Radius="25" KernelType="Gaussian"/>
+            </Image.Effect>
+        </Image>
+        <Rectangle Fill="#7F000000"></Rectangle>
+        <Grid Margin="32 16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="512"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBlock Style="{StaticResource headerTextStyle}"
+                       HorizontalAlignment="Left">Мир Кофе</TextBlock>
+                <Button HorizontalAlignment="Right"
+                        Name="aboutCoffeeHouses" Click="aboutCoffeeHouses_Click">О кофейнях</Button>
+            <StackPanel Orientation="Horizontal"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right">
+                <TextBlock Style="{StaticResource mediumTextStyle}">Администратор:</TextBlock>
+                <TextBlock Name="enteredAdminTbl"
+                           Style="{StaticResource mediumTextStyle}"
+                           Margin="8 0"></TextBlock>
+                <Button Margin="16 0 0 0"
+                        Name="exitbtn" Click="exitbtn_Click">Выход</Button>
+            </StackPanel>
+            <Grid Grid.Row="1"
+                  Margin="16 32">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="10"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource mediumTextStyle}"
+                           HorizontalAlignment="Left"
+                           Margin="16 0">Кофейня:</TextBlock>
+                <ComboBox Margin="16 8"
+                          FontSize="24"
+                          Grid.Row="2"
+                          Name="coffeeHousesCmb"
+                          DisplayMemberPath="name" SelectionChanged="coffeeHousesCmb_SelectionChanged"></ComboBox>
+                <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Row="4"
+                           HorizontalAlignment="Left"
+                           Margin="16 0">ФИО сотрудника:</TextBlock>
+                <TextBox Style="{StaticResource defaultTbStyle}"
+                         Grid.Row="5"
+                         Margin="16 4"
+                         Name="searchEmployeeTb" TextChanged="searchEmployeeTb_TextChanged" GotFocus="searchEmployeeTb_GotFocus"></TextBox>
+                <TextBlock Style="{StaticResource mediumTextStyle}"
+                           Grid.Row="7"
+                           HorizontalAlignment="Left"
+                           Margin="16 0">Список сотрудников:</TextBlock>
+                <ListView Name="EmployeesLb"
+                          Grid.Row="8"
+                          Margin="16"
+                          Background="Transparent"
+                          Foreground="White"
+                          FontSize="20" SelectionChanged="EmployeesLb_SelectionChanged">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="60"
+                                            DisplayMemberBinding="{Binding Path=id}">ID</GridViewColumn>
+                            <GridViewColumn Width="367"
+                                            DisplayMemberBinding="{Binding Path=name}">ФИО сотрудника</GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="1"
+                      Grid.Column="1"
+                      Margin="32 16">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="64"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+                    <TextBlock Style="{StaticResource headerTextStyle}"
+                               HorizontalAlignment="Left"
+                               FontSize="36"
+                               Text="{Binding name}"></TextBlock>
+                </StackPanel>
+                <Grid Grid.Row="1"
+                      Margin="16 24">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid VerticalAlignment="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left">
+                            <TextBlock Style="{StaticResource mediumTextStyle}">Кофейня:</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="2">
+                            <TextBlock Style="{StaticResource mediumTextStyle}">Должность:</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="4">
+                            <TextBlock Style="{StaticResource mediumTextStyle}">Работает с:</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="6">
+                            <TextBlock Style="{StaticResource mediumTextStyle}">Опозданий:</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="8">
+                            <TextBlock Style="{StaticResource mediumTextStyle}">Прогулов:</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="10">
+                            <TextBlock Style="{StaticResource mediumTextStyle}">Больничных:</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Row="12"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left">
+                            <TextBlock Style="{StaticResource mediumTextStyle}">Отпуск с:</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="14">
+                            <TextBlock Style="{StaticResource mediumTextStyle}">Отпуск до:</TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="16">
+                            <TextBlock Style="{StaticResource mediumTextStyle}">На смене:</TextBlock>
+                        </StackPanel>
+                    </Grid>
+                    <Grid VerticalAlignment="Top"
+                          Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left">
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                                       Text="{Binding CoffeeHouses.name}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="2">
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                                       Text="{Binding Posts.name}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="4">
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                                       Text="{Binding works_from,StringFormat={}{0:dd.MM.yyyy}}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="6">
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                                       Text="{Binding delay_count}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="8">
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                                       Text="{Binding truancy_count}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="10">
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                                       Text="{Binding hospital_count}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Row="12"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left">
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                                       Text="{Binding vacation_start, StringFormat={}{0:dd.MM.yyyy}}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="14">
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                                       Text="{Binding vacation_end, StringFormat={}{0:dd.MM.yyyy}}"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Grid.Row="16">
+                            <TextBlock Style="{StaticResource mediumTextStyle}"
+                                       Name="isWorksTbl"
+                                       Text="{Binding is_works}" DataContextChanged="isWorksTbl_DataContextChanged"></TextBlock>
+                        </StackPanel>
+                    </Grid>
+                    <Grid Grid.Column="2"
+                          Name="employeeControlGrid">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <ComboBox Grid.Row="2"
+                                  Name="postCmb"
+                                  DisplayMemberPath="name" 
+                                  FontSize="24"
+                                  Margin="0 4 16 4"
+                                  SelectionChanged="postCmb_SelectionChanged"></ComboBox>
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Row="6">
+                            <Button Name="delayMinusBtn" Click="delayMinusBtn_Click">-</Button>
+                            <Button Margin="16 0"
+                                    Name="delayPlusBtn" Click="delayPlusBtn_Click">+</Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Row="8">
+                            <Button Name="truancyMinusBtn" Click="truancyMinusBtn_Click">-</Button>
+                            <Button Margin="16 0"
+                                    Name="truancyPlusBtn" Click="truancyPlusBtn_Click">+</Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Row="10">
+                            <Button Name="hospitalMinusBtn" Click="hospitalMinusBtn_Click">-</Button>
+                            <Button Margin="16 0"
+                                    Name="hospitalPlusBtn" Click="hospitalPlusBtn_Click">+</Button>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal"
+                                    Grid.Row="12">
+                            <Button HorizontalAlignment="Left"
+                                Name="setVacationBtn" Click="setVacationBtn_Click">Назначить отпуск</Button>
+                            <Button Name="clearVacationBtn"
+                                    Margin="16 0" Click="clearVacationBtn_Click">Очистить</Button>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

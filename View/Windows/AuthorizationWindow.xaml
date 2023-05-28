@@ -1,0 +1,83 @@
+﻿<Window x:Class="WorldCoffee.View.Windows.AuthorizationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WorldCoffee.View.Windows"
+        mc:Ignorable="d"
+        MinWidth="1280" MinHeight="720"
+        Width="1920" Height="1080"
+        ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
+    <Grid>
+        <Image Source="/Resources/Images/black-and-white-coffee-shop-background-eps-free-vector.jpg" 
+               Stretch="Fill">
+            <Image.Effect>
+                <BlurEffect Radius="25" KernelType="Gaussian"/>
+            </Image.Effect>
+        </Image>
+        <Rectangle Fill="#7F000000"></Rectangle>
+        <Grid>
+            <Grid Margin="32">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Margin="0 128 0 0">
+                    <TextBlock Style="{StaticResource headerTextStyle}"
+                               TextWrapping="Wrap"
+                               TextAlignment="Center">Добро пожаловать в Мир Кофе</TextBlock>
+                    <TextBlock Style="{StaticResource mediumTextStyle}"
+                               Margin="0 32">Пожалуйста, войдите в систему!</TextBlock>
+                </StackPanel>
+                <Grid Grid.Column="1"
+                      Margin="128 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="128"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="96"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                            <RowDefinition Height="80"></RowDefinition>
+                            <RowDefinition Height="100"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Style="{StaticResource headerTextStyle}"
+                                   VerticalAlignment="Top">Авторизация</TextBlock>
+                        <TextBlock Style="{StaticResource mediumTextStyle}" 
+                                   Grid.Row="1">Логин</TextBlock>
+                        <TextBox Style="{StaticResource defaultTbStyle}"
+                                 Name="loginTb"
+                                 Grid.Row="2"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Width="400" TextChanged="loginTb_TextChanged"></TextBox>
+                        <TextBlock Style="{StaticResource mediumTextStyle}" 
+                                   Grid.Row="4">Пароль</TextBlock>
+                        <PasswordBox Style="{StaticResource defaultPbStyle}"
+                                 Name="passwordPb"
+                                 Grid.Row="5"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Width="400" PasswordChanged="passwordPb_PasswordChanged"></PasswordBox>
+                        <Button Grid.Row="6"
+                                Name="enterBtn" Click="enterBtn_Click">Вход</Button>
+                        <TextBlock Grid.Row="7"
+                                   Style="{StaticResource mediumTextStyle}"
+                                   Name="errorAuthorizationTbl"
+                                   Foreground="#FFF98E84"
+                                   VerticalAlignment="Top"></TextBlock>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
